@@ -5,16 +5,16 @@ import matplotlib.pyplot as plt
 SPEED_OF_LIGHT = 299792458.0
 
 
-def CalcPathLose(freq, d):
+def CalcPathLoss(freq: float, d: float) -> float:
     _lambda = SPEED_OF_LIGHT / freq
     loss = (4.0 * np.pi * d / _lambda) ** 2
     return loss
 
 
-def PlotPathLoss(feeq, dist, loss):
+def PlotPathLoss(freq: float, dist: float, loss: float) -> None:
     plt.figure()
     ax = plt.gca()
-    title = "Distance attenuation at %dHz" % (feeq)
+    title = "Distance attenuation at %dHz" % (freq)
     plt.title(title)
     ax.axes.xaxis.set_visible(True)
     ax.axes.yaxis.set_visible(True)
@@ -33,6 +33,6 @@ if __name__ == "__main__":
     print("Max Distance(m):", end="")
     dist = float(input())
     d = np.arange(dist / 1000.0, dist, dist / 1000.0)
-    loss = CalcPathLose(freq, d)
+    loss = CalcPathLoss(freq, d)
     loss_db = -10.0 * np.log10(loss)
     PlotPathLoss(freq, d, loss_db)
