@@ -6,7 +6,7 @@ SPEED_OF_LIGHT = 299792458.0
 
 
 def CalcPathLoss(freq: float, d: float) -> float:
-    _lambda = SPEED_OF_LIGHT / freq
+    _lambda = SPEED_OF_LIGHT / freq  # Calculation of wave length
     loss = (4.0 * np.pi * d / _lambda) ** 2
     return loss
 
